@@ -1,0 +1,71 @@
+ď»żSTRING 0
+{
+Gracz 1
+}
+
+STRING 1
+{
+Gracz 2
+}
+
+STRING 2
+{
+Gracz 3
+}
+
+STRING 3
+{
+Gracz 4
+}
+
+STRING 4
+{
+Armia 1
+}
+
+STRING 5
+{
+Armia 2
+}
+
+STRING 6
+{
+Armia 3
+}
+
+STRING 7
+{
+Armia 4
+}
+
+STRING 8
+{
+Armia 5
+}
+
+STRING 9
+{
+Armia 6
+}
+
+STRING 10
+{
+Sielskie ścieżki
+}
+
+STRING 11
+{
+KnK lub 2na2
+}
+
+STRING 12
+{
+Jeśli chcesz zakłócić spokój tej krainy, to zrobisz to na własne ryzyko. Pamiętaj, że za rzeką czekają wielkie bogactwa.
+}
+
+STRING 13
+{
+Blizzard Entertainment
+}
+
+
