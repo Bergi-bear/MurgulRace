@@ -68,3 +68,94 @@ STRING 13
 Blizzard Entertainment
 }
 
+STRING 14
+// Abilities: A000 (Бросок мешка), Name (Name)
+{
+Бросок мешка
+}
+
+STRING 15
+// Abilities: A000 (Бросок мешка), Hotkey (Hotkey - Normal)
+{
+D
+}
+
+STRING 16
+// Units: n002 (Мурлок-воин), Name (Name)
+{
+Мурлок-воин
+}
+
+STRING 17
+// Abilities: A000 (Бросок мешка), Tip (Tooltip - Normal)
+{
+Мамонит
+}
+
+STRING 18
+// Abilities: A000 (Бросок мешка), Ubertip (Tooltip - Normal - Extended)
+{
+Быстро кидает мешок с золотом в Храм пучин.
+Наносит урон x 10 вражескому юниту, тратит мешок
+}
+
+STRING 19
+// Abilities: A001 (Острое копьё), Name (Name)
+{
+Острое копьё
+}
+
+STRING 20
+// Abilities: A001 (Острое копьё), Tip (Tooltip - Normal)
+{
+Острое копьё
+}
+
+STRING 21
+// Abilities: A001 (Острое копьё), Ubertip (Tooltip - Normal - Extended)
+{
+Игнорирует физическую защиту любого противника нанося полный урон
+}
+
+STRING 22
+// Abilities: A001 (Острое копьё), EditorSuffix (Editor Suffix)
+{
+(мурлоки)
+}
+
+STRING 23
+// Upgrades: R000 (Авиабомбы), Name (Name)
+{
+Острые копья
+}
+
+STRING 24
+// Upgrades: R000 (Авиабомбы), Tip (Tooltip)
+{
+Исследовать Острые копья
+}
+
+STRING 25
+// Upgrades: R000 (Авиабомбы), Ubertip (Tooltip - Extended)
+{
+Позволяет мурлокам-войнам игнорировать броню противника
+}
+
+STRING 26
+// Upgrades: R000 (Авиабомбы), Hotkey (Hotkey)
+{
+R
+}
+
+STRING 27
+// Units: n002 (Мурлок-воин), Tip (Tooltip - Basic)
+{
+Обучить мурлока-война
+}
+
+STRING 28
+// Units: n002 (Мурлок-воин), Ubertip (Tooltip - Extended)
+{
+Легкий воин ближнего боя. Может изучить проникающий удар
+}
+
