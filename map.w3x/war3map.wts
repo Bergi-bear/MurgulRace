@@ -86,12 +86,6 @@ STRING 16
 Мурлок-воин
 }
 
-STRING 17
-// Abilities: A000 (Бросок мешка), Tip (Tooltip - Normal)
-{
-Мамонит
-}
-
 STRING 18
 // Abilities: A000 (Бросок мешка), Ubertip (Tooltip - Normal - Extended)
 {
@@ -151,12 +145,6 @@ STRING 27
 // Units: n002 (Мурлок-воин), Tip (Tooltip - Basic)
 {
 Обучить мурлока-война
-}
-
-STRING 28
-// Units: n002 (Мурлок-воин), Ubertip (Tooltip - Extended)
-{
-Легкий воин ближнего боя. Может изучить проникающий удар
 }
 
 STRING 29
@@ -233,7 +221,7 @@ STRING 43
 }
 
 STRING 44
-// Abilities: A002 (Дефибрилляция), Hotkey (Hotkey - Normal)
+// Units: n001 (Священный источник), Hotkey (Hotkey)
 {
 Q
 }
@@ -245,7 +233,7 @@ STRING 45
 }
 
 STRING 46
-// Abilities: A003 (Боулинг баш), Hotkey (Hotkey - Normal)
+// Units: n009 (Мурлок-охотник), Hotkey (Hotkey)
 {
 W
 }
@@ -275,7 +263,7 @@ STRING 51
 }
 
 STRING 55
-// Abilities: A003 (Боулинг баш), Researchhotkey (Hotkey - Learn)
+// Abilities: A003 (Боулинг баш), Hotkey (Hotkey - Normal)
 {
 W
 }
@@ -323,7 +311,7 @@ STRING 60
 }
 
 STRING 61
-// Abilities: A005 (Тяжелый удар), Hotkey (Hotkey - Normal)
+// Units: n008 (Мурлок- каннибал), Hotkey (Hotkey)
 {
 E
 }
@@ -335,7 +323,7 @@ STRING 62
 }
 
 STRING 64
-// Abilities: A005 (Тяжелый удар), Researchhotkey (Hotkey - Learn)
+// Abilities: A005 (Тяжелый удар), Hotkey (Hotkey - Normal)
 {
 E
 }
@@ -435,25 +423,25 @@ STRING 84
 }
 
 STRING 85
-// Units: n001 (Храм пучины), EditorSuffix (Name - Editor Suffix)
-{
-(новый)
-}
-
-STRING 86
 // Units: n004 (Хижина мурлока), EditorSuffix (Name - Editor Suffix)
 {
 (новый)
 }
 
-STRING 87
+STRING 86
 // Units: n005 (Нерестилище), EditorSuffix (Name - Editor Suffix)
 {
 (новый)
 }
 
-STRING 88
+STRING 87
 // Units: n006 (Святилище), EditorSuffix (Name - Editor Suffix)
+{
+(новый)
+}
+
+STRING 88
+// Units: n007 (Алтарь глубин), EditorSuffix (Name - Editor Suffix)
 {
 (новый)
 }
@@ -462,12 +450,6 @@ STRING 89
 // Units: n006 (Святилище), Name (Name)
 {
 Святилище
-}
-
-STRING 90
-// Units: n007 (Алтарь глубин), EditorSuffix (Name - Editor Suffix)
-{
-(новый)
 }
 
 STRING 91
@@ -483,7 +465,7 @@ STRING 92
 }
 
 STRING 93
-// Abilities: A002 (Дефибрилляция), Researchhotkey (Hotkey - Learn)
+// Units: n002 (Мурлок-воин), Hotkey (Hotkey)
 {
 Q
 }
@@ -510,5 +492,515 @@ STRING 97
 // Units: N003 (Вождь мурлоков), Revivetip (Tooltip - Revive)
 {
 Воскресить вождя мурлоков
+}
+
+STRING 98
+// Units: n008 (Мурлок- каннибал), Name (Name)
+{
+Мурлок- каннибал
+}
+
+STRING 99
+// Abilities: A002 (Дефибрилляция), Hotkey (Hotkey - Normal)
+{
+Q
+}
+
+STRING 100
+// Abilities: A007 (Поделить труп), Name (Name)
+{
+Поделить труп
+}
+
+STRING 101
+// Abilities: A003 (Боулинг баш), Researchhotkey (Hotkey - Learn)
+{
+W
+}
+
+STRING 103
+// Abilities: A007 (Поделить труп), Researchubertip (Tooltip - Learn - Extended)
+{
+Оглушает противника при атаке. 
+Длительность оглушения 2 сек.
+|cffffcc001-й уровень:|r Перезарядка: 20
+|cffffcc002-й уровень:|r Перезарядка: 16
+|cffffcc003-й уровень:|r Перезарядка: 12
+}
+
+STRING 104
+// Abilities: A005 (Тяжелый удар), Researchhotkey (Hotkey - Learn)
+{
+E
+}
+
+STRING 105
+// Abilities: A007 (Поделить труп), Researchtip (Tooltip - Learn)
+{
+Изучить «Тяжелый удар» [|cffffcc00%d-й уровень|r]
+}
+
+STRING 106
+// Abilities: A007 (Поделить труп), Ubertip (Tooltip - Normal - Extended)
+{
+Оглушает противника при атаке. 
+Длительность оглушения 2 сек.
+|cffffcc001-й уровень:|r Перезарядка: 20
+|cffffcc002-й уровень:|r Перезарядка: 16
+|cffffcc003-й уровень:|r Перезарядка: 12
+}
+
+STRING 107
+// Abilities: A007 (Поделить труп), Tip (Tooltip - Normal)
+{
+Тяжелый удар [|cffffcc002-й уровень|r]
+}
+
+STRING 108
+// Abilities: A007 (Поделить труп), Tip (Tooltip - Normal)
+{
+Тяжелый удар [|cffffcc003-й уровень|r]
+}
+
+STRING 109
+// Abilities: A007 (Поделить труп), Ubertip (Tooltip - Normal - Extended)
+{
+Оглушает противника при атаке. 
+Длительность оглушения 2 сек.
+|cffffcc001-й уровень:|r Перезарядка: 20
+|cffffcc002-й уровень:|r Перезарядка: 16
+|cffffcc003-й уровень:|r Перезарядка: 12
+}
+
+STRING 110
+// Abilities: A008 (Бросок сетки), Researchubertip (Tooltip - Learn - Extended)
+{
+Оглушает противника при атаке. 
+Длительность оглушения 2 сек.
+|cffffcc001-й уровень:|r Перезарядка: 20
+|cffffcc002-й уровень:|r Перезарядка: 16
+|cffffcc003-й уровень:|r Перезарядка: 12
+}
+
+STRING 113
+// Abilities: A000 (Бросок мешка), Tip (Tooltip - Normal)
+{
+Бросок мешка
+}
+
+STRING 114
+// Abilities: A007 (Поделить труп), Tip (Tooltip - Normal)
+{
+Поделить труп (|cffffcc00Пассивная способность|r)
+}
+
+STRING 115
+// Abilities: A007 (Поделить труп), Ubertip (Tooltip - Normal - Extended)
+{
+Если мурлок находит труп, то мгновенно разрывает его и восстанавливает всем войскам в радиусе 400 здоровье = 10% макс хп трупа.
+Перезарядка: |cffffcc0030|r
+}
+
+STRING 116
+// Abilities: A008 (Бросок сетки), Name (Name)
+{
+Бросок сетки
+}
+
+STRING 117
+// Abilities: A007 (Поделить труп), Hotkey (Hotkey - Normal)
+{
+W
+}
+
+STRING 118
+// Abilities: A008 (Бросок сетки), Tip (Tooltip - Normal)
+{
+Бросок сетки (|cffffcc00Пассивная способность|r)
+}
+
+STRING 119
+// Abilities: A008 (Бросок сетки), Ubertip (Tooltip - Normal - Extended)
+{
+Связывает сеткой цель атаки, на |cffffcc005|r секунд, цель становить неподвижной и меняет тип движения на |cffffcc00наземный|r.
+Перезарядка: |cffffcc0010|r
+}
+
+STRING 120
+// Abilities: A007 (Поделить труп), Researchhotkey (Hotkey - Learn)
+{
+E
+}
+
+STRING 121
+// Abilities: A008 (Бросок сетки), Researchtip (Tooltip - Learn)
+{
+Изучить «Тяжелый удар» [|cffffcc00%d-й уровень|r]
+}
+
+STRING 122
+// Abilities: A008 (Бросок сетки), Tip (Tooltip - Normal)
+{
+Тяжелый удар [|cffffcc002-й уровень|r]
+}
+
+STRING 123
+// Abilities: A008 (Бросок сетки), Tip (Tooltip - Normal)
+{
+Тяжелый удар [|cffffcc003-й уровень|r]
+}
+
+STRING 124
+// Abilities: A008 (Бросок сетки), Ubertip (Tooltip - Normal - Extended)
+{
+Оглушает противника при атаке. 
+Длительность оглушения 2 сек.
+|cffffcc001-й уровень:|r Перезарядка: 20
+|cffffcc002-й уровень:|r Перезарядка: 16
+|cffffcc003-й уровень:|r Перезарядка: 12
+}
+
+STRING 125
+// Abilities: A008 (Бросок сетки), Ubertip (Tooltip - Normal - Extended)
+{
+Оглушает противника при атаке. 
+Длительность оглушения 2 сек.
+|cffffcc001-й уровень:|r Перезарядка: 20
+|cffffcc002-й уровень:|r Перезарядка: 16
+|cffffcc003-й уровень:|r Перезарядка: 12
+}
+
+STRING 126
+// Units: e000 (Dummy), Name (Name)
+{
+Dummy
+}
+
+STRING 127
+// Abilities: A009 (Опутывание), EditorSuffix (Editor Suffix)
+{
+(Дамми)
+}
+
+STRING 128
+{
+111111111
+}
+
+STRING 129
+{
+Cast
+}
+
+STRING 130
+// Abilities: A006 (Каннибализм), Ubertip (Tooltip - Normal - Extended)
+{
+Поглощает находящийся рядом труп, восполняя 16 здоровья/сек.
+Радиус поиска трупа: 600
+}
+
+STRING 131
+// Abilities: A002 (Дефибрилляция), Researchhotkey (Hotkey - Learn)
+{
+Q
+}
+
+STRING 132
+// Abilities: A006 (Каннибализм), Hotkey (Hotkey - Normal)
+{
+Q
+}
+
+STRING 133
+// Abilities: A008 (Бросок сетки), Hotkey (Hotkey - Normal)
+{
+W
+}
+
+STRING 134
+// Abilities: A008 (Бросок сетки), Researchhotkey (Hotkey - Learn)
+{
+E
+}
+
+STRING 135
+// Units: n001 (Священный источник), EditorSuffix (Name - Editor Suffix)
+{
+(Тир 1)
+}
+
+STRING 136
+// Units: n001 (Священный источник), Name (Name)
+{
+Священный источник
+}
+
+STRING 137
+// Units: n001 (Священный источник), Tip (Tooltip - Basic)
+{
+Священный источник
+}
+
+STRING 138
+// Units: n001 (Священный источник), Ubertip (Tooltip - Extended)
+{
+Базовое здание. Обучает мурлоков-рабов, а также хранит добытые ресурсы. Даёт доступ к технологиям мурлоков, может быть улучшен ещё 2 раза
+}
+
+STRING 139
+// Units: n002 (Мурлок-воин), Ubertip (Tooltip - Extended)
+{
+Легкий воин ближнего боя. Может изучить проникающий удар.
+
+|cffffcc00Атакует наземные цели.|r
+}
+
+STRING 140
+// Units: n008 (Мурлок- каннибал), Tip (Tooltip - Basic)
+{
+Нанять мурлока-каннибала
+}
+
+STRING 141
+// Units: n008 (Мурлок- каннибал), Ubertip (Tooltip - Extended)
+{
+Легкий воин ближнего боя, может поедать трупы врагов и делиться съеденным с союзниками.
+
+|cffffcc00Атакует наземные цели.|r
+}
+
+STRING 142
+// Units: n009 (Мурлок-охотник), Ubertip (Tooltip - Extended)
+{
+Легкий воин ближнего боя. Владеет «Опутыванием». |n|n|cffffcc00Атакует наземные и воздушные цели.|r
+}
+
+STRING 143
+// Abilities: A00A (Пожирание), Name (Name)
+{
+Пожирание
+}
+
+STRING 144
+// Abilities: A00A (Пожирание), Hotkey (Hotkey - Normal)
+{
+Q
+}
+
+STRING 145
+// Abilities: A00A (Пожирание), Researchtip (Tooltip - Learn)
+{
+Изучить «Боулинг баш» [|cffffcc00%d-й уровень|r]
+}
+
+STRING 146
+// Abilities: A00A (Пожирание), Researchubertip (Tooltip - Learn - Extended)
+{
+Превращает 5 мурлоков войнов в огромный шар и запускает его в указанном направлении, все юниты которых заденет шар, получат урон и будут оглушены, а мурлоки перемещены в конечную точку.
+|cffffcc001-й уровень:|r Урон: 100, Оглушение: 1, Скорость: 200
+|cffffcc002-й уровень:|r Урон: 200, Оглушение: 2, Скорость: 400
+|cffffcc003-й уровень:|r Урон: 300, Оглушение: 2,5, Скорость: 600
+}
+
+STRING 147
+// Abilities: A00A (Пожирание), Tip (Tooltip - Normal)
+{
+Пожирание
+}
+
+STRING 148
+// Abilities: A00A (Пожирание), Tip (Tooltip - Normal)
+{
+Боулинг Баш [|cffffcc001-й уровень|r]
+}
+
+STRING 149
+// Abilities: A00A (Пожирание), Tip (Tooltip - Normal)
+{
+Боулинг Баш [|cffffcc001-й уровень|r]
+}
+
+STRING 150
+// Abilities: A00A (Пожирание), Ubertip (Tooltip - Normal - Extended)
+{
+Поглощает указанного союзного или вражеского юнита, юнит будет перевариваться со скорость 10 хп, в секунду и лечить черепаху, юнит может быть выплюнут досрочно. 
+}
+
+STRING 151
+// Abilities: A00A (Пожирание), Ubertip (Tooltip - Normal - Extended)
+{
+Превращает 5 мурлоков войнов в огромный шар и запускает его в указанном направлении, все юниты которых заденет шар, получат урон и будут оглушены, а мурлоки перемещены в конечную точку.
+|cffffcc001-й уровень:|r Урон: 100, Оглушение: 1, Скорость: 200
+|cffffcc002-й уровень:|r Урон: 200, Оглушение: 2, Скорость: 400
+|cffffcc003-й уровень:|r Урон: 300, Оглушение: 2,5, Скорость: 600
+}
+
+STRING 152
+// Abilities: A00A (Пожирание), Ubertip (Tooltip - Normal - Extended)
+{
+Превращает 5 мурлоков войнов в огромный шар и запускает его в указанном направлении, все юниты которых заденет шар, получат урон и будут оглушены, а мурлоки перемещены в конечную точку.
+|cffffcc001-й уровень:|r Урон: 100, Оглушение: 1, Скорость: 200
+|cffffcc002-й уровень:|r Урон: 200, Оглушение: 2, Скорость: 400
+|cffffcc003-й уровень:|r Урон: 300, Оглушение: 2,5, Скорость: 600
+}
+
+STRING 153
+// Abilities: A00A (Пожирание), Researchhotkey (Hotkey - Learn)
+{
+Q
+}
+
+STRING 154
+// Abilities: A00B (Переваривание), Name (Name)
+{
+Переваривание
+}
+
+STRING 155
+// Abilities: A00B (Переваривание), Hotkey (Hotkey - Normal)
+{
+W
+}
+
+STRING 156
+// Abilities: A00B (Переваривание), Tip (Tooltip - Normal)
+{
+Переваривание (|cffffcc00Индикатор|r)
+}
+
+STRING 157
+// Abilities: A00B (Переваривание), Ubertip (Tooltip - Normal - Extended)
+{
+Показывает время до полного переваривания юнита
+}
+
+STRING 158
+// Abilities: A00B (Переваривание), Researchhotkey (Hotkey - Learn)
+{
+E
+}
+
+STRING 159
+// Abilities: A00B (Переваривание), Researchtip (Tooltip - Learn)
+{
+Изучить «Тяжелый удар» [|cffffcc00%d-й уровень|r]
+}
+
+STRING 160
+// Abilities: A00B (Переваривание), Researchubertip (Tooltip - Learn - Extended)
+{
+Оглушает противника при атаке. 
+Длительность оглушения 2 сек.
+|cffffcc001-й уровень:|r Перезарядка: 20
+|cffffcc002-й уровень:|r Перезарядка: 16
+|cffffcc003-й уровень:|r Перезарядка: 12
+}
+
+STRING 161
+// Abilities: A00B (Переваривание), Tip (Tooltip - Normal)
+{
+Тяжелый удар [|cffffcc002-й уровень|r]
+}
+
+STRING 162
+// Abilities: A00B (Переваривание), Tip (Tooltip - Normal)
+{
+Тяжелый удар [|cffffcc003-й уровень|r]
+}
+
+STRING 163
+// Abilities: A00B (Переваривание), Ubertip (Tooltip - Normal - Extended)
+{
+Оглушает противника при атаке. 
+Длительность оглушения 2 сек.
+|cffffcc001-й уровень:|r Перезарядка: 20
+|cffffcc002-й уровень:|r Перезарядка: 16
+|cffffcc003-й уровень:|r Перезарядка: 12
+}
+
+STRING 164
+// Abilities: A00B (Переваривание), Ubertip (Tooltip - Normal - Extended)
+{
+Оглушает противника при атаке. 
+Длительность оглушения 2 сек.
+|cffffcc001-й уровень:|r Перезарядка: 20
+|cffffcc002-й уровень:|r Перезарядка: 16
+|cffffcc003-й уровень:|r Перезарядка: 12
+}
+
+STRING 165
+// Abilities: A00C (Плевок), Name (Name)
+{
+Плевок
+}
+
+STRING 166
+// Abilities: A00C (Плевок), Hotkey (Hotkey - Normal)
+{
+Q
+}
+
+STRING 167
+// Abilities: A00C (Плевок), Researchtip (Tooltip - Learn)
+{
+Изучить «Боулинг баш» [|cffffcc00%d-й уровень|r]
+}
+
+STRING 168
+// Abilities: A00C (Плевок), Researchubertip (Tooltip - Learn - Extended)
+{
+Превращает 5 мурлоков войнов в огромный шар и запускает его в указанном направлении, все юниты которых заденет шар, получат урон и будут оглушены, а мурлоки перемещены в конечную точку.
+|cffffcc001-й уровень:|r Урон: 100, Оглушение: 1, Скорость: 200
+|cffffcc002-й уровень:|r Урон: 200, Оглушение: 2, Скорость: 400
+|cffffcc003-й уровень:|r Урон: 300, Оглушение: 2,5, Скорость: 600
+}
+
+STRING 169
+// Abilities: A00C (Плевок), Tip (Tooltip - Normal)
+{
+Плевок
+}
+
+STRING 170
+// Abilities: A00C (Плевок), Tip (Tooltip - Normal)
+{
+Боулинг Баш [|cffffcc001-й уровень|r]
+}
+
+STRING 171
+// Abilities: A00C (Плевок), Tip (Tooltip - Normal)
+{
+Боулинг Баш [|cffffcc001-й уровень|r]
+}
+
+STRING 172
+// Abilities: A00C (Плевок), Ubertip (Tooltip - Normal - Extended)
+{
+Выплюнуть юнита в указанную область, Юнит нанесёт 100 урона и замедлит врагов в области приземеления на 5 секунд.
+Если юнит-снаряд является вражеским, то он также получит урон.
+}
+
+STRING 173
+// Abilities: A00C (Плевок), Ubertip (Tooltip - Normal - Extended)
+{
+Превращает 5 мурлоков войнов в огромный шар и запускает его в указанном направлении, все юниты которых заденет шар, получат урон и будут оглушены, а мурлоки перемещены в конечную точку.
+|cffffcc001-й уровень:|r Урон: 100, Оглушение: 1, Скорость: 200
+|cffffcc002-й уровень:|r Урон: 200, Оглушение: 2, Скорость: 400
+|cffffcc003-й уровень:|r Урон: 300, Оглушение: 2,5, Скорость: 600
+}
+
+STRING 174
+// Abilities: A00C (Плевок), Ubertip (Tooltip - Normal - Extended)
+{
+Превращает 5 мурлоков войнов в огромный шар и запускает его в указанном направлении, все юниты которых заденет шар, получат урон и будут оглушены, а мурлоки перемещены в конечную точку.
+|cffffcc001-й уровень:|r Урон: 100, Оглушение: 1, Скорость: 200
+|cffffcc002-й уровень:|r Урон: 200, Оглушение: 2, Скорость: 400
+|cffffcc003-й уровень:|r Урон: 300, Оглушение: 2,5, Скорость: 600
+}
+
+STRING 175
+// Abilities: A00C (Плевок), Researchhotkey (Hotkey - Learn)
+{
+Q
 }
 

@@ -6,10 +6,14 @@
 TIMER_PERIOD=1/32
 
 --Юниты
+DummyID=FourCC('e000') -- даммик
 MurgulID=FourCC('n000') -- мурлок работник
 MainBaseID=FourCC('n001') -- Храм пучин, главное здание
 MurgulWarriorlID=FourCC('n002') -- мурлок воин
 HeroWarriorID=FourCC('N003') -- Вождь мурлоков ГЕРОЙ
+HealerID=FourCC('n008') -- мурлок мородёр, что делит труп
+HeroHunterID=FourCC('n009') -- мурлок охотник
+TurtleID=FourCC('n00A') -- Драконья черепаха
 
 
 --Способности
@@ -18,6 +22,11 @@ AbilityPierceID=FourCC("A001") -- Проникающая способность
 AbilityDefibrID=FourCC("A002") -- дефибриляция
 AbilityBowlingID=FourCC("A003") -- Боулинг баш
 AbilityIronID=FourCC("A005") -- тяжелый удар
+AbilityMaaHealID=FourCC("A007") -- поделить труп
+AbilityWebID=FourCC("A008") -- Бросок сетки
+AbilityDevour=FourCC("A00A") -- пожирание черепахой
+AbilityDevourIndicator=FourCC("A00B") -- пожирание черепахой индикатор
+AbilityDevourOut=FourCC("A00C") -- влевок черепахой
 
 --Баффы
 GoldReturnID=FourCC("B000") -- отлов золота, которое попало кого-то
