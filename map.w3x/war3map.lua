@@ -2,6 +2,7 @@ gg_rct_Region_000 = nil
 gg_rct_Region_001 = nil
 gg_trg_edsd = nil
 gg_trg_Melee_Initialization = nil
+gg_trg_Untitled_Trigger_001 = nil
 gg_rg_000 = __jarray(0)
 gg_rg_001 = __jarray(0)
 gg_rg_002 = __jarray(0)
@@ -347,6 +348,35 @@ function Unit000020_DropItems()
     if (canDrop) then
         RandomDistReset()
         RandomDistAddItem(ChooseRandomItemEx(ITEM_TYPE_POWERUP, 1), 100)
+        itemID = RandomDistChoose()
+        if (trigUnit ~= nil) then
+            UnitDropItem(trigUnit, itemID)
+        else
+            WidgetDropItem(trigWidget, itemID)
+        end
+    end
+    bj_lastDyingWidget = nil
+    DestroyTrigger(GetTriggeringTrigger())
+end
+
+function Unit000023_DropItems()
+    local trigWidget = nil
+    local trigUnit = nil
+    local itemID = 0
+    local canDrop = true
+    trigWidget = bj_lastDyingWidget
+    if (trigWidget == nil) then
+        trigUnit = GetTriggerUnit()
+    end
+    if (trigUnit ~= nil) then
+        canDrop = not IsUnitHidden(trigUnit)
+        if (canDrop and GetChangingUnit() ~= nil) then
+            canDrop = (GetChangingUnitPrevOwner() == Player(PLAYER_NEUTRAL_AGGRESSIVE))
+        end
+    end
+    if (canDrop) then
+        RandomDistReset()
+        RandomDistAddItem(ChooseRandomItemEx(ITEM_TYPE_PERMANENT, 1), 100)
         itemID = RandomDistChoose()
         if (trigUnit ~= nil) then
             UnitDropItem(trigUnit, itemID)
@@ -1721,29 +1751,6 @@ function Unit000187_DropItems()
     DestroyTrigger(GetTriggeringTrigger())
 end
 
-function CreateBuildingsForPlayer0()
-    local p = Player(0)
-    local u
-    local unitID
-    local t
-    local life
-    u = BlzCreateUnitWithSkin(p, FourCC("n001"), -6656.0, 4352.0, 270.000, FourCC("n001"))
-end
-
-function CreateUnitsForPlayer0()
-    local p = Player(0)
-    local u
-    local unitID
-    local t
-    local life
-    u = BlzCreateUnitWithSkin(p, FourCC("n002"), -6581.7, 4021.0, 316.170, FourCC("n002"))
-    u = BlzCreateUnitWithSkin(p, FourCC("n000"), -7092.4, 4629.7, 327.930, FourCC("n000"))
-    u = BlzCreateUnitWithSkin(p, FourCC("n000"), -6973.7, 4649.0, 8.273, FourCC("n000"))
-    u = BlzCreateUnitWithSkin(p, FourCC("n000"), -6883.6, 4555.9, 112.657, FourCC("n000"))
-    u = BlzCreateUnitWithSkin(p, FourCC("n000"), -6958.2, 4443.5, 76.775, FourCC("n000"))
-    u = BlzCreateUnitWithSkin(p, FourCC("n000"), -7063.8, 4497.6, 232.434, FourCC("n000"))
-end
-
 function CreateNeutralHostile()
     local p = Player(PLAYER_NEUTRAL_AGGRESSIVE)
     local u
@@ -2638,6 +2645,25 @@ function CreateNeutralHostile()
     if (unitID ~= -1) then
         u = BlzCreateUnitWithSkin(p, unitID, -84.0, -1668.2, 29.680, unitID)
     end
+    unitID = gg_rg_008[2]
+    if (unitID ~= -1) then
+        u = BlzCreateUnitWithSkin(p, unitID, -5593.8, 3850.4, 240.478, unitID)
+        SetUnitAcquireRange(u, 200.0)
+    end
+    unitID = gg_rg_008[2]
+    if (unitID ~= -1) then
+        u = BlzCreateUnitWithSkin(p, unitID, -5468.2, 3810.7, 240.478, unitID)
+        SetUnitAcquireRange(u, 200.0)
+    end
+    unitID = gg_rg_008[0]
+    if (unitID ~= -1) then
+        u = BlzCreateUnitWithSkin(p, unitID, -5538.5, 3730.2, 231.514, unitID)
+        SetUnitAcquireRange(u, 200.0)
+        t = CreateTrigger()
+        TriggerRegisterUnitEvent(t, u, EVENT_UNIT_DEATH)
+        TriggerRegisterUnitEvent(t, u, EVENT_UNIT_CHANGE_OWNER)
+        TriggerAddAction(t, Unit000023_DropItems)
+    end
 end
 
 function CreateNeutralPassiveBuildings()
@@ -2670,14 +2696,6 @@ function CreateNeutralPassiveBuildings()
     SetResourceAmount(u, 20000)
     u = BlzCreateUnitWithSkin(p, FourCC("ngme"), 7296.0, -3648.0, 270.000, FourCC("ngme"))
     u = BlzCreateUnitWithSkin(p, FourCC("ngme"), -7232.0, 1728.0, 270.000, FourCC("ngme"))
-    u = BlzCreateUnitWithSkin(p, FourCC("ngol"), 4480.0, -6784.0, 270.000, FourCC("ngol"))
-    SetResourceAmount(u, 12500)
-    u = BlzCreateUnitWithSkin(p, FourCC("ngol"), -7040.0, -6912.0, 270.000, FourCC("ngol"))
-    SetResourceAmount(u, 12500)
-    u = BlzCreateUnitWithSkin(p, FourCC("ngol"), 7424.0, 3200.0, 270.000, FourCC("ngol"))
-    SetResourceAmount(u, 12500)
-    u = BlzCreateUnitWithSkin(p, FourCC("ngol"), -7424.0, 6912.0, 270.000, FourCC("ngol"))
-    SetResourceAmount(u, 12500)
     u = BlzCreateUnitWithSkin(p, FourCC("nmer"), 6976.0, -1664.0, 270.000, FourCC("nmer"))
     SetUnitColor(u, ConvertPlayerColor(0))
     u = BlzCreateUnitWithSkin(p, FourCC("ngme"), 4112.0, 7088.0, 270.000, FourCC("ngme"))
@@ -2710,11 +2728,9 @@ function CreateNeutralPassive()
 end
 
 function CreatePlayerBuildings()
-    CreateBuildingsForPlayer0()
 end
 
 function CreatePlayerUnits()
-    CreateUnitsForPlayer0()
 end
 
 function CreateAllUnits()
@@ -2736,25 +2752,358 @@ function CreateRegions()
 end
 
 --CUSTOM_CODE
+function UnitDamageArea(u,damage,x,y,range)
+	local isdamage=false
+	local e=nil
+	local hero=nil
+	GroupEnumUnitsInRange(perebor,x,y,range,nil)
+	while true do
+		e = FirstOfGroup(perebor)
+		if e == nil then break end
+		if UnitAlive(e) and UnitAlive(u) and IsUnitEnemy(e,GetOwningPlayer(u)) then
+			UnitDamageTarget( u, e, damage, true, false, ATTACK_TYPE_NORMAL, DAMAGE_TYPE_NORMAL, WEAPON_TYPE_WHOKNOWS )
+			isdamage=true
+			hero=e
+		end
+		GroupRemoveUnit(perebor,e)
+	end
+	if PointContentDestructable(x,y,range,true,1+damage,u) then	isdamage=true	end
+	return isdamage, hero
+end
+
+
+
+
+GlobalRect=Rect(0,0,0,0)
+function PointContentDestructable (x,y,range,iskill,damage,hero)
+	local content=false
+	local unitZ=GetUnitZ(hero)
+	if range==nil then range=80 end
+	if iskill==nil then iskill=false end
+	SetRect(GlobalRect, x - range, y - range, x + range, y +range)
+	EnumDestructablesInRect(GlobalRect,nil,function ()
+		local d=GetEnumDestructable()
+		if GetDestructableLife(d)>0 and unitZ<=GetTerrainZ(x,y)+50 then
+			content=true
+			if iskill then
+				if not IsDestructableInvulnerable(d) then
+					SetDestructableLife(d,GetDestructableLife(d)-damage*5)
+				end
+				if GetDestructableLife(d)>=1 then
+					SetDestructableAnimation(d,"Stand Hit")
+				else
+				end
+			end
+		else
+		end
+	end)
+	return content
+end
+
 ---
 --- Generated by EmmyLua(https://github.com/EmmyLua)
 --- Created by Bergi.
 --- DateTime: 28.09.2020 17:25
 ---
+TIMER_PERIOD=1/32
+
 --Юниты
 MurgulID=FourCC('n000') -- мурлок работник
 MainBaseID=FourCC('n001') -- Храм пучин, главное здание
+MurgulWarriorlID=FourCC('n002') -- мурлок воин
+HeroWarriorID=FourCC('N003') -- Вождь мурлоков ГЕРОЙ
 
 
 --Способности
 ReturnFastGoldID=FourCC("A000") -- возврат золоты броском
 AbilityPierceID=FourCC("A001") -- Проникающая способность
+AbilityDefibrID=FourCC("A002") -- дефибриляция
+AbilityBowlingID=FourCC("A003") -- Боулинг баш
+AbilityIronID=FourCC("A005") -- тяжелый удар
 
 --Баффы
 GoldReturnID=FourCC("B000") -- отлов золота, которое попало кого-то
 
 --Исследования
 PierceResearchID=FourCC("R000") -- проникающее оружие
+
+---
+--- Generated by EmmyLua(https://github.com/EmmyLua)
+--- Created by Bergi.
+--- DateTime: 10.01.2020 23:44
+---
+---@param x real
+---@param y real
+---@return boolean
+function InMapXY(x, y)
+	return x > GetRectMinX(bj_mapInitialPlayableArea) and x < GetRectMaxX(bj_mapInitialPlayableArea) and y > GetRectMinY(bj_mapInitialPlayableArea) and y < GetRectMaxY(bj_mapInitialPlayableArea)
+end
+
+---@param x real
+---@param distance real
+---@param angle real radian
+---@return real
+function GetPolarOffsetX(x, distance, angle)
+	return x + distance * math.cos(angle)
+end
+
+---@param y real
+---@param distance real
+---@param angle real radian
+---@return real
+function GetPolarOffsetY(y, distance, angle)
+	return y + distance * math.sin(angle)
+end
+
+---@param x real
+---@param distance real
+---@param angle real degrees
+---@return real
+function MoveX(x, distance, angle)
+	return x + distance * math.cos(angle * bj_DEGTORAD)
+end
+
+---@param y real
+---@param distance real
+---@param angle real degrees
+---@return real
+function MoveY(y, distance, angle)
+	return y + distance * math.sin(angle * bj_DEGTORAD)
+end
+
+
+local GetTerrainZ_location = Location(0, 0)
+---@param x real
+---@param y real
+---@return real
+function GetTerrainZ(x, y)
+	MoveLocation(GetTerrainZ_location, x, y)
+	return GetLocationZ(GetTerrainZ_location)
+end
+
+---@param target unit
+---@return real
+function GetUnitZ(target)
+	MoveLocation(GetTerrainZ_location, GetUnitX(target), GetUnitY(target))
+	return GetLocationZ(GetTerrainZ_location) + GetUnitFlyHeight(target)
+end
+
+---@param target unit
+---@param z real
+function SetUnitZ(target, z)
+	UnitAddAbility(target, FourCC('Aave'))
+	UnitRemoveAbility(target, FourCC('Aave'))
+	MoveLocation(GetTerrainZ_location, GetUnitX(target), GetUnitY(target))
+	SetUnitFlyHeight(target, z - GetLocationZ(GetTerrainZ_location), 0)
+end
+
+---@param h real максимальная высота в прыжке на середине расстояния (x = d / 2)
+---@param d real общее расстояние до цели
+---@param x real расстояние от исходной цели до точки, где следует взять высоту по параболе
+---@return real
+function ParabolaZ (h, d, x)
+	return (4 * h / d) * (d - x) * (x / d)
+end
+
+---@param zs real начальная высота высота одного края дуги
+---@param ze real конечная высота высота другого края дуги
+---@param h real максимальная высота на середине расстояния (x = d / 2)
+---@param d real общее расстояние до цели
+---@param x real расстояние от исходной цели до точки
+---@return real
+function GetParabolaZ(zs, ze, h, d, x)
+	return (2 * (zs + ze - 2 * h) * (x / d - 1) + (ze - zs)) * (x / d) + zs
+end
+
+---@param xa real
+---@param ya real
+---@param xb real
+---@param yb real
+---@return real
+function DistanceBetweenXY(xa, ya, xb, yb)
+	local dx = xb - xa
+	local dy = yb - ya
+	return math.sqrt(dx * dx + dy * dy)
+end
+
+---@param xa real
+---@param ya real
+---@param za real
+---@param xb real
+---@param yb real
+---@param zb real
+---@return real
+function DistanceBetweenXYZ(xa, ya, za, xb, yb, zb)
+	local dx = xb - xa
+	local dy = yb - ya
+	local dz = zb - za
+	return math.sqrt(dx * dx + dy * dy + dz * dz)
+end
+
+---@param xa real
+---@param ya real
+---@param xb real
+---@param yb real
+---@return real radian
+function AngleBetweenXY(xa, ya, xb, yb)
+	return math.atan(yb - ya, xb - xa)
+end
+
+---@param a real radian
+---@param b real radian
+---@return real radian
+function AngleDifference(a, b)
+	local c---@type real
+	local d---@type real
+	if a > b then
+		c = a - b
+		d = b - a + 2 * math.pi
+	else
+		c = b - a
+		d = a - b + 2 * math.pi
+	end
+	return c > d and d or c
+end
+
+--@author https://xgm.guru/p/wc3/warden-math
+---@param a real degrees
+---@param b real degrees
+---@return real degrees
+function AngleDifferenceDeg(a, b)
+	a, b = math.abs(a, 360), math.abs(b, 360)
+	local x---@type real
+	if (a > b) then
+		a, b = b, a
+	end
+	x = b - 360
+	if (b - a > a - x) then
+		b = x
+	end
+	return math.abs(a - b)
+end
+
+-- Находит длину перпендикуляра от отрезка, заданного xa, ya, xb, yb к точке, заданной xc, yc
+--@author https://xgm.guru/p/wc3/perpendicular
+---@param xa real
+---@param ya real
+---@param xb real
+---@param yb real
+---@param xc real
+---@param yc real
+---@return real
+function Perpendicular (xa, ya, xb, yb, xc, yc)
+	return math.sqrt((xa - xc) * (xa - xc) + (ya - yc) * (ya - yc)) * math.sin(math.atan(yc - ya, xc - xa) - math.atan(yb - ya, xb - xa))
+end
+
+--@Hate https://xgm.guru/p/wc3/241479
+---@param source unit
+---@param x real
+---@param y real
+function SetUnitPositionSmooth(source, x, y)
+	local last_x = GetUnitX(source)
+	local last_y = GetUnitY(source)
+	local bx
+	local by
+	--print("Смус выполнена")
+	SetUnitPosition(source, x, y)
+	if (RAbsBJ(GetUnitX(source) - x) > 0.5) or (RAbsBJ(GetUnitY(source) - y) > 0.5) then
+		SetUnitPosition(source, x, last_y)
+		bx = RAbsBJ(GetUnitX(source) - x) <= 0.5
+		SetUnitPosition(source, last_x, y)
+		by = RAbsBJ(GetUnitY(source) - y) <= 0.5
+
+		---
+		local dx=math.abs(x-last_x)
+		if dx>=100 then
+			print("Телепорт бак в функции Smooth"..dx )
+		end
+		---
+		if bx then
+			SetUnitPosition(source, x, last_y)
+		elseif by then
+			SetUnitPosition(source, last_x, y)
+		else
+			SetUnitPosition(source, last_x, last_y)
+		end
+	end
+end
+
+--Bergi
+function GetUnitXY(unit)
+	return GetUnitX(unit),GetUnitY(unit)
+end
+
+function MoveXY(x,y, distance, angle)
+	return x + distance * math.cos(angle * bj_DEGTORAD),y + distance * math.sin(angle * bj_DEGTORAD)
+end
+
+function UnitCollisionOFF(unit)
+	UnitAddAbility(unit,FourCC('A000'))
+	IssueImmediateOrder(unit,"windwalk")
+end
+
+function AngleBetweenUnits(caster,target)
+	local yb,ya,xb,xa=GetUnitY(target),GetUnitY(caster),GetUnitX(target),GetUnitX(caster)
+	return Atan2BJ(yb - ya, xb - xa)
+end
+
+function math.clamp (inb, low, high) --
+	return math.min( math.max(inb, low ), high )
+end
+
+function math.lerp(a, b, t)
+	return a + (b - a) * t
+end
+
+function repeatN(t, m)
+	return math.clamp(t - math.floor(t / m) * m, 0, m)
+end
+
+function lerpTheta(a, b, t)
+	local dt = repeatN(b - a, 360)
+	if dt>180 then	dt=dt-360 end
+	return math.lerp(a, a + dt, t)
+end
+
+function AngleBetweenXYZ(x1, y1,z1, x2, y2,z2)
+	local a=x1*x2+y1*y2+z1*z2
+	local b=math.sqrt(x1*x1+y1*y1+z1*z1)
+	local c=math.sqrt(x2*x2+y2*y2+z2*z2)
+	return math.acos(a/(b*c))
+end
+
+-- функия принадлежности точки сектора
+-- x1, x2 - координаты проверяемой точки
+-- x2, y2 - координаты вершины сектора
+-- orientation - ориентация сектора в мировых координатах
+-- width - уголовой размер сектора в градусах
+-- radius - окружности которой принадлежит сектор
+function IsPointInSector(x1,y1,x2,y2,orientation,width,radius)
+	local lenght=DistanceBetweenXY(x1,y1,x2,y2)
+	local angle=Acos(Cos(orientation*bj_DEGTORAD)*(x1-x2)/lenght+Sin(orientation*bj_DEGTORAD)*(y1-y2)/lenght )*bj_RADTODEG
+	return angle<=width and lenght<=radius
+end
+
+function GetParabolaPitch(height,distance,i, speed)
+	local f = function(x)
+		return ParabolaZ(height, distance, x)
+	end
+
+	local df = function(x)
+		return ParabolaZDerivative(height, distance, x)
+	end
+	local x0 = i * speed
+	local x1 = x0 + speed
+	local thisZ = f(x0)
+	local someTangentZ = Tangent(f, df, x0, x1)
+	return math.atan(someTangentZ - thisZ, x1 - x0)--pitch
+end
+function Tangent(f, df, x0, x)
+	return f(x0) + df(x0) * (x - x0)
+end
+function ParabolaZDerivative(height, distance, x)
+	return 4 * height / distance / distance * (distance - 2 * x)
+end
 
 ---
 --- Generated by EmmyLua(https://github.com/EmmyLua)
@@ -2782,6 +3131,64 @@ TriggerAddAction = function(trig, callback)
 		end
 	end
 	realTriggerAddAction(trig, pcallback)
+end
+---
+--- Generated by EmmyLua(https://github.com/EmmyLua)
+--- Created by Bergi.
+--- DateTime: 30.04.2020 0:04
+stunEff="Abilities\\Spells\\Human\\Thunderclap\\ThunderclapTarget"
+StunSystem={}
+function StunUnit(hero,dur)
+	if not StunSystem[GetHandleId(hero)] then
+	--	print("оглушен первый раз")
+		StunSystem[GetHandleId(hero)]={
+			Time=0,
+			Eff=nil,
+			Timer=nil
+		}
+	end
+	local data=StunSystem[GetHandleId(hero)]
+	local curdur=0
+	if data.Time==0 then
+		data.Timer=CreateTimer()
+		--print("старт нового таймера")
+		data.Eff=AddSpecialEffectTarget(stunEff,hero,"overhead")
+		BlzPauseUnitEx(hero,true)
+	end
+
+	if data.Time<dur  then
+		--print("Более сильное оглушение, обновляем время")
+		data.Time=dur
+	else
+		--print("Есть более долгое оглушение ничего не делаем")
+		return
+	end
+
+	TimerStart(data.Timer, 0.1, true, function()
+		curdur=curdur+0.1
+		data.Time=data.Time-0.1
+		if curdur>=dur or not UnitAlive(hero) then
+			--print("Вышел из стана")
+			BlzPauseUnitEx(hero,false)
+			DestroyTimer(GetExpiredTimer())
+			data.Time=0
+			DestroyEffect(data.Eff)
+			data.Timer=nil
+		end
+	end)
+end
+
+function StanArea(hero,range,duration)
+	local e=nil
+	GroupEnumUnitsInRange(perebor,GetUnitX(hero),GetUnitY(hero),range,nil)
+	while true do
+		e = FirstOfGroup(perebor)
+		if e == nil then break end
+		if UnitAlive(e) and IsUnitEnemy(e,GetOwningPlayer(hero)) and not IsUnitType(e,UNIT_TYPE_STRUCTURE) then
+			StunUnit(e,duration)
+		end
+		GroupRemoveUnit(perebor,e)
+	end
 end
 ---@param text string
 ---@param textSize real
@@ -2869,6 +3276,21 @@ function FlyTextTagShieldXY(x,y, text, player)--™
 	local xr=GetRandomReal(-0.05,0,05)
 	return FlyTextTag(""..text, 0.018, x, y, 150, 128, 128, 128, 255, xr, 0.03, 1, 3, player)
 end
+
+function StaticTag(text, textSize, x, y, z, red, green, blue, alpha, xvel, yvel, fadepoint, lifespan, player)
+	local t = CreateTextTag()
+	SetTextTagText(t, text, textSize)
+	SetTextTagPos(t, x, y, z)
+	SetTextTagColor(t, red, green, blue, alpha)
+	--SetTextTagVelocity(t, xvel, yvel)
+	SetTextTagFadepoint(t, fadepoint)
+	SetTextTagLifespan(t, lifespan)
+	SetTextTagPermanent(t, false)
+	if player ~= nil then
+		SetTextTagVisibility(t, player == GetLocalPlayer())
+	end
+	return t
+end
 ---
 --- Generated by EmmyLua(https://github.com/EmmyLua)
 --- Created by Bergi.
@@ -2902,6 +3324,7 @@ function FindUnitOfType(id,flag,x,y)
 			GroupRemoveUnit(perebor,e)
 		end
 	else
+		--local e=nil
 		GroupEnumUnitsInRange(perebor,x,y,flag,nil)
 		while true do
 			e = FirstOfGroup(perebor)
@@ -2926,8 +3349,420 @@ function FindUnitOfType(id,flag,x,y)
 	if unit==nil then
 	--	print("Не найдено живых юнитов данного типа")
 	end
-	return unit,k
+	return unit,k,rg
 end
+---
+--- Generated by EmmyLua(https://github.com/EmmyLua)
+--- Created by Bergi.
+--- DateTime: 01.10.2020 11:38
+---
+do
+	TimerStart(CreateTimer(), 0.12, false, function()
+		CreationRaceUnit()
+	end)
+end
+
+HallHuman=FourCC("htow")
+PeonHuman=FourCC("hpea")
+
+HallOrc=FourCC("ogre")
+PeonOrc=FourCC("opeo")
+
+HallUndead=FourCC("unpl")
+PeonUndead=FourCC("uaco")
+PeonUndead1=FourCC("ugho")
+
+HallNightElf=FourCC("etol")
+PeonNightElf=FourCC("ewsp")
+
+
+function CreationRaceUnit()
+	for i = 0, bj_MAX_PLAYER_SLOTS - 1 do
+		local player=Player(i)
+		local x,y=GetPlayerStartLocationX(player),GetPlayerStartLocationY(player)
+		local mine,k =FindUnitOfType(FourCC('ngol') ,1000,x,y)
+		if k~=1 then
+		--	print(k)
+		end
+		local angle=AngleBetweenXY(x,y,GetUnitXY(mine))/bj_DEGTORAD
+		local xu,yu=MoveXY(x,y,DistanceBetweenXY(x,y,GetUnitXY(mine))/2,angle)
+		if GetPlayerController(player)==MAP_CONTROL_COMPUTER then
+			if GetPlayerRace(player)==RACE_ORC and GetPlayerSlotState(player)==PLAYER_SLOT_STATE_PLAYING then
+				CreateUnit(player,HallOrc,x,y,0)
+				CreateUnit(player,PeonOrc,xu,yu,0)
+				CreateUnit(player,PeonOrc,xu,yu,0)
+				CreateUnit(player,PeonOrc,xu,yu,0)
+				CreateUnit(player,PeonOrc,xu,yu,0)
+				CreateUnit(player,PeonOrc,xu,yu,0)
+			end
+
+			if GetPlayerRace(player)==RACE_HUMAN and GetPlayerSlotState(player)==PLAYER_SLOT_STATE_PLAYING then
+				CreateUnit(player,HallHuman,x,y,0)
+				CreateUnit(player,PeonHuman,xu,yu,0)
+				CreateUnit(player,PeonHuman,xu,yu,0)
+				CreateUnit(player,PeonHuman,xu,yu,0)
+				CreateUnit(player,PeonHuman,xu,yu,0)
+				CreateUnit(player,PeonHuman,xu,yu,0)
+			end
+			if GetPlayerRace(player)==RACE_NIGHTELF and GetPlayerSlotState(player)==PLAYER_SLOT_STATE_PLAYING then
+				CreateUnit(player,HallNightElf,x,y,0)
+				CreateUnit(player,PeonNightElf,xu,yu,0)
+				CreateUnit(player,PeonNightElf,xu,yu,0)
+				CreateUnit(player,PeonNightElf,xu,yu,0)
+				CreateUnit(player,PeonNightElf,xu,yu,0)
+				CreateUnit(player,PeonNightElf,xu,yu,0)
+				local new=ReplaceUnitBJ(mine,FourCC('egol'),bj_UNIT_STATE_METHOD_RELATIVE)
+				SetUnitOwner(new,player,true)
+
+			end
+			if GetPlayerRace(player)==RACE_UNDEAD and GetPlayerSlotState(player)==PLAYER_SLOT_STATE_PLAYING then
+				CreateUnit(player,HallUndead,x,y,0)
+				CreateUnit(player,PeonUndead,xu,yu,0)
+				CreateUnit(player,PeonUndead,xu,yu,0)
+				CreateUnit(player,PeonUndead,xu,yu,0)
+				CreateUnit(player,PeonUndead1,xu,yu,0)
+				local new=ReplaceUnitBJ(mine,FourCC('ugol'),bj_UNIT_STATE_METHOD_RELATIVE)
+				SetUnitOwner(new,player,true)
+			end
+		else
+			--Игрок всегда за расу мурлоков
+			if GetPlayerSlotState(player)==PLAYER_SLOT_STATE_PLAYING and GetPlayerController(player)==MAP_CONTROL_USER then
+				CreateUnit(player,MainBaseID,x,y,0)
+				CreateUnit(player,MurgulID,xu,yu,0)
+				CreateUnit(player,MurgulID,xu,yu,0)
+				CreateUnit(player,MurgulID,xu,yu,0)
+				CreateUnit(player,MurgulID,xu,yu,0)
+				CreateUnit(player,MurgulID,xu,yu,0)
+			end
+		end
+	end
+end
+---
+--- Generated by EmmyLua(https://github.com/EmmyLua)
+--- Created by Bergi.
+--- DateTime: 29.09.2020 10:48
+---
+do
+	TimerStart(CreateTimer(), 0.11, false, function()
+		InitCastAbilityBowling()
+	end)
+end
+
+function InitCastAbilityBowling()
+	local SpellTrigger = CreateTrigger()
+	for i = 0, bj_MAX_PLAYER_SLOTS - 1 do
+		local player = Player(i)
+		TriggerRegisterPlayerUnitEvent(SpellTrigger, player, EVENT_PLAYER_UNIT_SPELL_CAST)
+	end
+	TriggerAddAction(SpellTrigger, function()
+		if GetSpellAbilityId() == AbilityBowlingID then
+			local caster = GetTriggerUnit()
+			local xEnd,yEnd=GetSpellTargetX(),GetSpellTargetY()
+			local kMax=5 --макс число мурлоков для каста способности
+			local k=0
+			local e=nil
+			local units={}
+			GroupEnumUnitsInRange(perebor,GetUnitX(caster),GetUnitY(caster),250,nil)
+			while true do
+				e = FirstOfGroup(perebor)
+				if e == nil then break end
+				if UnitAlive(e) and GetUnitTypeId(e)==MurgulWarriorlID then
+					if k<=kMax then
+						k=k+1
+						units[k]=e
+					end
+				end
+				GroupRemoveUnit(perebor,e)
+			end
+			if k>=kMax then
+				--print("прячем юнитов")
+				BowlingBash(caster,xEnd,yEnd,units)
+				for i=1,#units do
+					ShowUnit(units[i],false)
+				end
+			else
+				local names={"юнита","юнитов","юнитов","юнитов","юнитов"}
+				FlyTextTagMiss(caster,"Недостаточно "..(kMax-k).." "..names[kMax-k].." в радиусе",GetOwningPlayer(caster))
+				AddCircleAreaForUnit(caster,500,2)
+				TimerStart(CreateTimer(), 0.0, false, function()
+					local mana=BlzGetUnitAbilityManaCost(caster,AbilityBowlingID,GetUnitAbilityLevel(caster,AbilityBowlingID)-1)
+					SetUnitState(caster,UNIT_STATE_MANA,GetUnitState(caster,UNIT_STATE_MANA)+mana)
+					BlzStartUnitAbilityCooldown(caster,AbilityBowlingID,1)
+					--BlzEndUnitAbilityCooldown(caster,AbilityBowlingID)
+				end)
+			end
+			--print(k .. " всего Эффектов") --481
+		end
+	end)
+end
+
+
+function BowlingBash(caster,xEnd,yEnd,units)
+	local x,y=GetUnitXY(caster)
+	local angle = (AngleBetweenXY(x,y,xEnd,yEnd)/bj_DEGTORAD)-90
+	local k = 0
+	local d=20
+	local h=0
+	local lvl=GetUnitAbilityLevel(caster,AbilityBowlingID)
+	local speed=lvl*4 --скорость вращения колеса
+	local damage=100*lvl
+	speed=-speed
+	local effTable={}
+	local damageGroup=CreateGroup()
+	for j = 72, 360, 72 do
+		local i = 90
+
+		local eff= AddSpecialEffect("Units\\Creeps\\MurgulReaver\\MurgulReaver", 0, 0)
+		effTable[k]=eff
+		k = k + 1
+
+		BlzPlaySpecialEffect(eff,ANIM_TYPE_SPELL)
+		TimerStart(CreateTimer(), 0.1, false, function()
+			BlzSetSpecialEffectTimeScale(eff,0)
+		end)
+		BlzSetSpecialEffectYaw(eff, math.rad(angle))
+		local jn=j
+
+		TimerStart(CreateTimer(), TIMER_PERIOD, true, function()
+			jn = jn + speed
+			x,y=MoveXY(x,y,-speed//3,angle+90)
+			h=GetTerrainZ(x,y)+50
+
+			local e=nil
+			GroupEnumUnitsInRange(perebor,x,y,150,nil)
+			while true do
+				e = FirstOfGroup(perebor)
+				if e == nil then break end
+				if UnitAlive(e)  and IsUnitEnemy(e,GetOwningPlayer(caster)) then
+					if not IsUnitInGroup(e,damageGroup) then
+						UnitDamageTarget( caster, e, damage, true, false, ATTACK_TYPE_NORMAL, DAMAGE_TYPE_NORMAL, WEAPON_TYPE_WHOKNOWS )
+						GroupAddUnit(damageGroup,e)
+						StunUnit(e,1)
+						--print("наносим урон "..damage)
+					else
+						--print("повторная обработка и попытка нанести урон")
+					end
+				end
+				GroupRemoveUnit(perebor,e)
+			end
+			local newx = d * Sin(jn * bj_DEGTORAD) * Cos(i * bj_DEGTORAD)
+			local newy = d * Cos(jn * bj_DEGTORAD)
+			local nx = newx * Cos(angle * bj_DEGTORAD) - newy * Sin(angle * bj_DEGTORAD) + x
+			local ny = newx * Sin(angle * bj_DEGTORAD) + newy * Cos(angle * bj_DEGTORAD) + y
+			local nz = h + d * Sin(jn * bj_DEGTORAD) * Sin(i * bj_DEGTORAD)
+			BlzSetSpecialEffectPosition(eff, nx, ny, nz)
+			BlzSetSpecialEffectRoll(eff, math.rad(jn))--print(math.rad(jn))
+			--print(DistanceBetweenXY(x,y,xEnd,yEnd))
+			if DistanceBetweenXY(x,y,xEnd,yEnd)<=30 then
+				--print("достиг конечной точки")
+				DestroyTimer(GetExpiredTimer())
+				TimerStart(CreateTimer(), TIMER_PERIOD, false, function()
+					DestroyGroup(damageGroup)
+				end)
+
+				for n=0,#effTable do
+					BlzSetSpecialEffectPosition(effTable[n],4000,4000,0)
+					DestroyEffect(effTable[n])
+				end
+				for n=1,#units do
+					ShowUnit(units[n],true)
+					SetUnitPosition(units[n],xEnd,yEnd)
+					IssueImmediateOrder(units[n],"stop")
+				end
+				--UnitDamageArea(caster,4,xEnd,yEnd,250)
+				PointContentDestructable(xEnd,yEnd,250,true,500,caster)
+			end
+		end)
+	end
+end
+
+
+---
+--- Generated by EmmyLua(https://github.com/EmmyLua)
+--- Created by Bergi.
+--- DateTime: 29.09.2020 10:48
+---
+do
+	TimerStart(CreateTimer(), 0.11, false, function()
+		InitCastAbilityDefibrill()
+		InitUnitMurgulDeath()
+	end)
+end
+
+function InitCastAbilityDefibrill()
+	local SpellTrigger = CreateTrigger()
+	for i = 0, bj_MAX_PLAYER_SLOTS - 1 do
+		local player = Player(i)
+		TriggerRegisterPlayerUnitEvent(SpellTrigger, player, EVENT_PLAYER_UNIT_SPELL_ENDCAST)
+	end
+	TriggerAddAction(SpellTrigger, function()
+		if GetSpellAbilityId() == AbilityDefibrID then
+			local caster=GetTriggerUnit()
+			local x,y,range=GetUnitX(caster),GetUnitY(caster),200
+			local e=nil
+			local k=GetUnitAbilityLevel(caster,AbilityDefibrID)
+			local kd=0
+			--print("cast")
+			GroupEnumUnitsInRange(perebor,x,y,range,nil)
+			while true do
+				e = FirstOfGroup(perebor)
+
+				if e == nil then break end
+				--print(GetUnitName(e)"юнит в переборе")
+				if not UnitAlive(e) and  GetUnitTypeId(e)==MurgulWarriorlID and GetOwningPlayer(e)==GetOwningPlayer(caster) then --
+					if IWantToBeRevive[GetHandleId(e)] and k>0 then
+						k=k-1
+						kd=kd+1
+						--print("создаём нового")
+						local new=CreateUnit(GetOwningPlayer(caster),MurgulWarriorlID,GetUnitX(e),GetUnitY(e),GetRandomInt(0,360))
+						SetUnitLifePercentBJ(new,50)
+						ShowUnit(e,false)
+					end
+					--print("Воскрешаем мертвого мурлока")
+				end
+				GroupRemoveUnit(perebor,e)
+			end
+			if kd==0 then
+				--print("Не кого воскрешать, показываем радиус возвращаем ресурсы")
+				FlyTextTagMiss(caster,"Нет юнитов в радиусе",GetOwningPlayer(caster))
+				AddCircleAreaForUnit(caster,400,2)
+				TimerStart(CreateTimer(), 0.0, false, function()
+					local mana=BlzGetUnitAbilityManaCost(caster,AbilityDefibrID,k-1)
+					SetUnitState(caster,UNIT_STATE_MANA,GetUnitState(caster,UNIT_STATE_MANA)+mana)
+					--print(mana)
+					--BlzEndUnitAbilityCooldown(caster,AbilityDefibrID)
+					BlzStartUnitAbilityCooldown(caster,AbilityDefibrID,1)
+				end)
+			end
+		end
+	end)
+end
+
+IWantToBeRevive={}
+function InitUnitMurgulDeath()
+	local gg_trg_DEADGUI = CreateTrigger()
+	TriggerRegisterAnyUnitEventBJ(gg_trg_DEADGUI, EVENT_PLAYER_UNIT_DEATH)
+	TriggerAddAction(gg_trg_DEADGUI, function()
+		local DeadUnit=GetTriggerUnit()
+		if GetUnitTypeId(DeadUnit)==MurgulWarriorlID then
+			IWantToBeRevive[GetHandleId(DeadUnit)]=true
+			local sec=5
+			local tag=StaticTag(sec, 0.025, GetWidgetX(DeadUnit), GetWidgetY(DeadUnit), 0, 120, 240, 120, 255, 0, 0.04, 2, 5, GetOwningPlayer(DeadUnit))
+			SetTextTagVisibility(tag, false)
+			local tagTimer=CreateTimer()
+			local hero,kHero,heroTable=FindUnitOfType(HeroWarriorID,1000,GetUnitXY(DeadUnit))
+			if kHero>1 then
+				for i=1,#heroTable do
+					if GetOwningPlayer(heroTable[i])==GetOwningPlayer(DeadUnit) then
+						hero=heroTable[i]
+						print("несколько героев видят дефибриляцию, обратитесь к автору карты")
+					end
+				end
+			end
+
+
+			TimerStart(tagTimer, 0.1, true, function()
+				DestroyTextTag(tag)
+				sec=sec-0.1
+				local testShowed=string.format("%02.1f",sec)
+				tag=StaticTag(testShowed, 0.025, GetWidgetX(DeadUnit), GetWidgetY(DeadUnit), 0, 120, 240, 120, 255, 0, 0.04, 2, 5, GetOwningPlayer(DeadUnit))
+				SetTextTagVisibility(tag, false)
+				if hero then
+					if IsUnitInRange(hero,DeadUnit,1000) then
+						SetTextTagVisibility(tag, GetOwningPlayer(hero) == GetLocalPlayer())
+					else
+						SetTextTagVisibility(tag, false)
+					end
+				end
+				if IsUnitHidden(DeadUnit) then
+					DestroyTextTag(tag)
+					DestroyTimer(tagTimer)
+				end
+			end)
+
+			TimerStart(CreateTimer(), 5, false, function()
+				--print("больше не может быть воскрешен")
+				IWantToBeRevive[GetHandleId(DeadUnit)]=false
+				DestroyTextTag(tag)
+				DestroyTimer(tagTimer)
+			end)
+		end
+	end )
+end
+
+
+function AddCircleAreaForUnit(unit,radius,timed)
+		local path="replaceabletextures\\selection\\rangeindicator" -- путь до дефолтной иконки
+	if not radius then
+		radius=BlzGetUnitWeaponRealField(unit,UNIT_WEAPON_RF_ATTACK_RANGE,0)*2.3 -- коэффициент 2,3 подобран методом тыка и исходит из размеров текстуры
+		--print(radius)
+	end
+	if not timed then
+		timed=9999
+	end
+	local CircleImage=CreateImage(path,radius,radius,radius,5000,5000,0,0,0,0,4)
+
+	SetImageRenderAlways(CircleImage, true)
+	ShowImage(CircleImage,false)
+	SetImagePosition(CircleImage,GetUnitX(unit),GetUnitY(unit),0)
+	local alpha=255
+	local str=timed
+	TimerStart(CreateTimer(), TIMER_PERIOD, true, function()
+		if GetLocalPlayer()==GetOwningPlayer(unit) then
+			ShowImage(CircleImage,true)
+		end
+		alpha=alpha-str
+		SetImageColor(CircleImage,255,0,0,alpha)
+		timed=timed-TIMER_PERIOD
+		local xs,ys=GetUnitX(unit)-radius/2-16,GetUnitY(unit)-radius/2-16
+		SetImagePosition(CircleImage,xs,ys,0)
+
+		if timed<=0 then
+			DestroyTimer(GetExpiredTimer())
+			DestroyImage(CircleImage)
+			ShowImage(CircleImage,false)
+		end
+	end)
+end
+---
+--- Generated by EmmyLua(https://github.com/EmmyLua)
+--- Created by Bergi.
+--- DateTime: 29.09.2020 0:37
+---
+---
+do
+	TimerStart(CreateTimer(), 0.11, false, function()
+		InitStunReload()
+	end)
+end
+function InitStunReload()
+	local DamageTrigger = CreateTrigger()
+	for i = 0, bj_MAX_PLAYER_SLOTS - 1 do
+		TriggerRegisterPlayerUnitEvent(DamageTrigger, Player(i), EVENT_PLAYER_UNIT_DAMAGING) -- До вычета брони
+	end
+	TriggerAddAction(DamageTrigger, function()
+
+		local damage     = GetEventDamage() -- число урона
+		if damage < 1 then return end
+		local eventId         = GetHandleId(GetTriggerEventId())
+		local isEventDamaging = eventId == GetHandleId(EVENT_PLAYER_UNIT_DAMAGING)
+		local target          = GetTriggerUnit() -- тот кто получил урон
+		local caster          = GetEventDamageSource() -- тот кто нанёс урон
+
+
+		if isEventDamaging then
+			--BlzSetEventDamage(damage)
+			if BlzGetUnitAbilityCooldownRemaining(caster,AbilityIronID)<=.01 and GetUnitAbilityLevel(caster,AbilityIronID)>0  then
+				local lvl=GetUnitAbilityLevel(caster,AbilityIronID)
+				local cd={20,16,12}
+				BlzStartUnitAbilityCooldown(caster,AbilityIronID,cd[lvl])
+				StunUnit(target,2)
+			end
+		end
+	end)
+
+end
+
 ---
 --- Generated by EmmyLua(https://github.com/EmmyLua)
 --- DateTime: 28.09.2020 18:09
@@ -3151,7 +3986,7 @@ function IgnoringArmor()
 			--GetPlayerTechResearched()
 				if GetUnitAbilityLevel(caster,AbilityPierceID)>0 and  GetPlayerTechResearched(GetOwningPlayer(caster), PierceResearchID, true) then
 				BlzSetEventDamage(newDamage)
-				print(newDamage.." проникающий урон")
+				--print(newDamage.." проникающий урон")
 			end
 
 			--print(newDamage.." новый урон")
@@ -3176,6 +4011,20 @@ function InitTrig_edsd()
     TriggerAddAction(gg_trg_edsd, Trig_edsd_Actions)
 end
 
+function Trig_Untitled_Trigger_001_Actions()
+    BlzHideOriginFrames(true)
+end
+
+function InitTrig_Untitled_Trigger_001()
+    gg_trg_Untitled_Trigger_001 = CreateTrigger()
+    TriggerAddAction(gg_trg_Untitled_Trigger_001, Trig_Untitled_Trigger_001_Actions)
+end
+
+function Trig_Melee_Initialization_Func010A()
+    SetPlayerStateBJ(GetEnumPlayer(), PLAYER_STATE_RESOURCE_HERO_TOKENS, 1)
+    SetPlayerTechMaxAllowedSwap(FourCC("N003"), 1, GetEnumPlayer())
+end
+
 function Trig_Melee_Initialization_Actions()
     MeleeStartingVisibility()
     MeleeStartingHeroLimit()
@@ -3183,6 +4032,7 @@ function Trig_Melee_Initialization_Actions()
     MeleeStartingResources()
     MeleeClearExcessUnits()
     MeleeStartingAI()
+    ForForce(GetPlayersAll(), Trig_Melee_Initialization_Func010A)
 end
 
 function InitTrig_Melee_Initialization()
@@ -3192,6 +4042,7 @@ end
 
 function InitCustomTriggers()
     InitTrig_edsd()
+    InitTrig_Untitled_Trigger_001()
     InitTrig_Melee_Initialization()
 end
 
@@ -3201,32 +4052,36 @@ end
 
 function InitCustomPlayerSlots()
     SetPlayerStartLocation(Player(0), 0)
+    ForcePlayerStartLocation(Player(0), 0)
     SetPlayerColor(Player(0), ConvertPlayerColor(0))
     SetPlayerRacePreference(Player(0), RACE_PREF_HUMAN)
-    SetPlayerRaceSelectable(Player(0), true)
+    SetPlayerRaceSelectable(Player(0), false)
     SetPlayerController(Player(0), MAP_CONTROL_USER)
     SetPlayerStartLocation(Player(1), 1)
+    ForcePlayerStartLocation(Player(1), 1)
     SetPlayerColor(Player(1), ConvertPlayerColor(1))
     SetPlayerRacePreference(Player(1), RACE_PREF_ORC)
-    SetPlayerRaceSelectable(Player(1), true)
-    SetPlayerController(Player(1), MAP_CONTROL_USER)
+    SetPlayerRaceSelectable(Player(1), false)
+    SetPlayerController(Player(1), MAP_CONTROL_COMPUTER)
     SetPlayerStartLocation(Player(2), 2)
+    ForcePlayerStartLocation(Player(2), 2)
     SetPlayerColor(Player(2), ConvertPlayerColor(2))
     SetPlayerRacePreference(Player(2), RACE_PREF_UNDEAD)
-    SetPlayerRaceSelectable(Player(2), true)
-    SetPlayerController(Player(2), MAP_CONTROL_USER)
+    SetPlayerRaceSelectable(Player(2), false)
+    SetPlayerController(Player(2), MAP_CONTROL_COMPUTER)
     SetPlayerStartLocation(Player(3), 3)
+    ForcePlayerStartLocation(Player(3), 3)
     SetPlayerColor(Player(3), ConvertPlayerColor(3))
     SetPlayerRacePreference(Player(3), RACE_PREF_NIGHTELF)
-    SetPlayerRaceSelectable(Player(3), true)
-    SetPlayerController(Player(3), MAP_CONTROL_USER)
+    SetPlayerRaceSelectable(Player(3), false)
+    SetPlayerController(Player(3), MAP_CONTROL_COMPUTER)
 end
 
 function InitCustomTeams()
     SetPlayerTeam(Player(0), 0)
-    SetPlayerTeam(Player(1), 0)
-    SetPlayerTeam(Player(2), 0)
-    SetPlayerTeam(Player(3), 0)
+    SetPlayerTeam(Player(2), 1)
+    SetPlayerTeam(Player(1), 2)
+    SetPlayerTeam(Player(3), 3)
 end
 
 function InitAllyPriorities()
@@ -3265,17 +4120,13 @@ function config()
     SetMapDescription("TRIGSTR_012")
     SetPlayers(4)
     SetTeams(4)
-    SetGamePlacement(MAP_PLACEMENT_TEAMS_TOGETHER)
+    SetGamePlacement(MAP_PLACEMENT_USE_MAP_SETTINGS)
     DefineStartLocation(0, -6656.0, 4288.0)
     DefineStartLocation(1, 6272.0, 6208.0)
     DefineStartLocation(2, 6272.0, -6464.0)
     DefineStartLocation(3, -4672.0, -6464.0)
     InitCustomPlayerSlots()
-    SetPlayerSlotAvailable(Player(0), MAP_CONTROL_USER)
-    SetPlayerSlotAvailable(Player(1), MAP_CONTROL_USER)
-    SetPlayerSlotAvailable(Player(2), MAP_CONTROL_USER)
-    SetPlayerSlotAvailable(Player(3), MAP_CONTROL_USER)
-    InitGenericPlayerSlots()
+    InitCustomTeams()
     InitAllyPriorities()
 end
 

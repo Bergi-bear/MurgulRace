@@ -159,3 +159,356 @@ STRING 28
 Легкий воин ближнего боя. Может изучить проникающий удар
 }
 
+STRING 29
+// Units: N003 (Вождь мурлоков), Name (Name)
+{
+Вождь мурлоков
+}
+
+STRING 30
+// Abilities: A002 (Дефибрилляция), Name (Name)
+{
+Дефибрилляция
+}
+
+STRING 31
+// Units: n000 (Мурлок-раб), Hotkey (Hotkey)
+{
+Q
+}
+
+STRING 32
+// Abilities: A002 (Дефибрилляция), Researchtip (Tooltip - Learn)
+{
+Изучить «Дефибрилляцию» [|cffffcc00%d-й уровень|r]
+}
+
+STRING 34
+// Abilities: A002 (Дефибрилляция), Tip (Tooltip - Normal)
+{
+Дефибрилляция [|cffffcc001-й уровень|r]
+}
+
+STRING 35
+// Abilities: A002 (Дефибрилляция), Tip (Tooltip - Normal)
+{
+Дефибрилляция [|cffffcc002-й уровень|r]
+}
+
+STRING 36
+// Abilities: A002 (Дефибрилляция), Tip (Tooltip - Normal)
+{
+Дефибрилляция [|cffffcc003-й уровень|r]
+}
+
+STRING 40
+// Abilities: A002 (Дефибрилляция), Researchubertip (Tooltip - Learn - Extended)
+{
+Воскрешает мурлоков-войнов, которые умерли менее 5 секунд назад с 50% запасом здоровья.
+|cffffcc00Радиус действия:|r 400
+|cffffcc001-й уровень:|r 1 мурлок-воин
+|cffffcc002-й уровень:|r 2 мурлока-воина
+|cffffcc003-й уровень:|r 3 мурлока-воина
+}
+
+STRING 41
+// Abilities: A002 (Дефибрилляция), Ubertip (Tooltip - Normal - Extended)
+{
+Воскрешает |cffffcc001|r мурлока-война, который умер менее 5 секунд назад с 50% запасом здоровья.
+|cffffcc00Радиус действия:|r 400
+}
+
+STRING 42
+// Abilities: A002 (Дефибрилляция), Ubertip (Tooltip - Normal - Extended)
+{
+Воскрешает |cffffcc002|r мурлоков-войнов, которые умерли менее 5 секунд назад с 50% запасом здоровья.
+|cffffcc00Радиус действия:|r 400
+}
+
+STRING 43
+// Abilities: A002 (Дефибрилляция), Ubertip (Tooltip - Normal - Extended)
+{
+Воскрешает |cffffcc003|r мурлоков-войнов, которые умерли менее 5 секунд назад с 50% запасом здоровья.
+|cffffcc00Радиус действия:|r 400
+}
+
+STRING 44
+// Abilities: A002 (Дефибрилляция), Hotkey (Hotkey - Normal)
+{
+Q
+}
+
+STRING 45
+// Abilities: A003 (Боулинг баш), Name (Name)
+{
+Боулинг баш
+}
+
+STRING 46
+// Abilities: A003 (Боулинг баш), Hotkey (Hotkey - Normal)
+{
+W
+}
+
+STRING 47
+// Abilities: A003 (Боулинг баш), Researchtip (Tooltip - Learn)
+{
+Изучить «Боулинг баш» [|cffffcc00%d-й уровень|r]
+}
+
+STRING 49
+// Abilities: A003 (Боулинг баш), Tip (Tooltip - Normal)
+{
+Боулинг Баш [|cffffcc001-й уровень|r]
+}
+
+STRING 50
+// Abilities: A003 (Боулинг баш), Tip (Tooltip - Normal)
+{
+Боулинг Баш [|cffffcc001-й уровень|r]
+}
+
+STRING 51
+// Abilities: A003 (Боулинг баш), Tip (Tooltip - Normal)
+{
+Боулинг Баш [|cffffcc001-й уровень|r]
+}
+
+STRING 55
+// Abilities: A003 (Боулинг баш), Researchhotkey (Hotkey - Learn)
+{
+W
+}
+
+STRING 56
+// Abilities: A003 (Боулинг баш), Researchubertip (Tooltip - Learn - Extended)
+{
+Превращает 5 мурлоков войнов в огромный шар и запускает его в указанном направлении, все юниты которых заденет шар, получат урон и будут оглушены, а мурлоки перемещены в конечную точку.
+|cffffcc001-й уровень:|r Урон: 100, Оглушение: 1, Скорость: 200
+|cffffcc002-й уровень:|r Урон: 200, Оглушение: 2, Скорость: 400
+|cffffcc003-й уровень:|r Урон: 300, Оглушение: 2,5, Скорость: 600
+}
+
+STRING 57
+// Abilities: A003 (Боулинг баш), Ubertip (Tooltip - Normal - Extended)
+{
+Превращает 5 мурлоков войнов в огромный шар и запускает его в указанном направлении, все юниты которых заденет шар, получат урон и будут оглушены, а мурлоки перемещены в конечную точку.
+|cffffcc001-й уровень:|r Урон: 100, Оглушение: 1, Скорость: 200
+|cffffcc002-й уровень:|r Урон: 200, Оглушение: 2, Скорость: 400
+|cffffcc003-й уровень:|r Урон: 300, Оглушение: 2,5, Скорость: 600
+}
+
+STRING 58
+// Abilities: A003 (Боулинг баш), Ubertip (Tooltip - Normal - Extended)
+{
+Превращает 5 мурлоков войнов в огромный шар и запускает его в указанном направлении, все юниты которых заденет шар, получат урон и будут оглушены, а мурлоки перемещены в конечную точку.
+|cffffcc001-й уровень:|r Урон: 100, Оглушение: 1, Скорость: 200
+|cffffcc002-й уровень:|r Урон: 200, Оглушение: 2, Скорость: 400
+|cffffcc003-й уровень:|r Урон: 300, Оглушение: 2,5, Скорость: 600
+}
+
+STRING 59
+// Abilities: A003 (Боулинг баш), Ubertip (Tooltip - Normal - Extended)
+{
+Превращает 5 мурлоков войнов в огромный шар и запускает его в указанном направлении, все юниты которых заденет шар, получат урон и будут оглушены, а мурлоки перемещены в конечную точку.
+|cffffcc001-й уровень:|r Урон: 100, Оглушение: 1, Скорость: 200
+|cffffcc002-й уровень:|r Урон: 200, Оглушение: 2, Скорость: 400
+|cffffcc003-й уровень:|r Урон: 300, Оглушение: 2,5, Скорость: 600
+}
+
+STRING 60
+// Abilities: A005 (Тяжелый удар), Name (Name)
+{
+Тяжелый удар
+}
+
+STRING 61
+// Abilities: A005 (Тяжелый удар), Hotkey (Hotkey - Normal)
+{
+E
+}
+
+STRING 62
+// Abilities: A005 (Тяжелый удар), Tip (Tooltip - Normal)
+{
+Тяжелый удар [|cffffcc001-й уровень|r]
+}
+
+STRING 64
+// Abilities: A005 (Тяжелый удар), Researchhotkey (Hotkey - Learn)
+{
+E
+}
+
+STRING 65
+// Abilities: A005 (Тяжелый удар), Researchtip (Tooltip - Learn)
+{
+Изучить «Тяжелый удар» [|cffffcc00%d-й уровень|r]
+}
+
+STRING 67
+// Abilities: A005 (Тяжелый удар), Tip (Tooltip - Normal)
+{
+Тяжелый удар [|cffffcc002-й уровень|r]
+}
+
+STRING 68
+// Abilities: A005 (Тяжелый удар), Tip (Tooltip - Normal)
+{
+Тяжелый удар [|cffffcc003-й уровень|r]
+}
+
+STRING 71
+// Abilities: A005 (Тяжелый удар), Ubertip (Tooltip - Normal - Extended)
+{
+Оглушает противника при атаке. 
+Длительность оглушения 2 сек.
+|cffffcc001-й уровень:|r Перезарядка: 20
+|cffffcc002-й уровень:|r Перезарядка: 16
+|cffffcc003-й уровень:|r Перезарядка: 12
+}
+
+STRING 72
+// Abilities: A005 (Тяжелый удар), Researchubertip (Tooltip - Learn - Extended)
+{
+Оглушает противника при атаке. 
+Длительность оглушения 2 сек.
+|cffffcc001-й уровень:|r Перезарядка: 20
+|cffffcc002-й уровень:|r Перезарядка: 16
+|cffffcc003-й уровень:|r Перезарядка: 12
+}
+
+STRING 73
+// Abilities: A005 (Тяжелый удар), Ubertip (Tooltip - Normal - Extended)
+{
+Оглушает противника при атаке. 
+Длительность оглушения 2 сек.
+|cffffcc001-й уровень:|r Перезарядка: 20
+|cffffcc002-й уровень:|r Перезарядка: 16
+|cffffcc003-й уровень:|r Перезарядка: 12
+}
+
+STRING 74
+// Abilities: A005 (Тяжелый удар), Ubertip (Tooltip - Normal - Extended)
+{
+Оглушает противника при атаке. 
+Длительность оглушения 2 сек.
+|cffffcc001-й уровень:|r Перезарядка: 20
+|cffffcc002-й уровень:|r Перезарядка: 16
+|cffffcc003-й уровень:|r Перезарядка: 12
+}
+
+STRING 75
+// Abilities: A004 (Знамя лидера), Name (Name)
+{
+Знамя лидера
+}
+
+STRING 78
+// Abilities: A004 (Знамя лидера), Researchtip (Tooltip - Learn)
+{
+Изучить «Знамя лидера»
+}
+
+STRING 80
+// Abilities: A004 (Знамя лидера), Tip (Tooltip - Normal)
+{
+Знамя лидера
+}
+
+STRING 82
+// Buffs/Effects: B001 (), Bufftip (Tooltip)
+{
+Знамя лидера
+}
+
+STRING 83
+// Abilities: A004 (Знамя лидера), Researchubertip (Tooltip - Learn - Extended)
+{
+Увеличивает урон от атак находящихся рядом союзников на |cffffcc005 ед.|r
+}
+
+STRING 84
+// Abilities: A004 (Знамя лидера), Ubertip (Tooltip - Normal - Extended)
+{
+Увеличивает урон от атак находящихся рядом союзников на |cffffcc005 ед.|r
+}
+
+STRING 85
+// Units: n001 (Храм пучины), EditorSuffix (Name - Editor Suffix)
+{
+(новый)
+}
+
+STRING 86
+// Units: n004 (Хижина мурлока), EditorSuffix (Name - Editor Suffix)
+{
+(новый)
+}
+
+STRING 87
+// Units: n005 (Нерестилище), EditorSuffix (Name - Editor Suffix)
+{
+(новый)
+}
+
+STRING 88
+// Units: n006 (Святилище), EditorSuffix (Name - Editor Suffix)
+{
+(новый)
+}
+
+STRING 89
+// Units: n006 (Святилище), Name (Name)
+{
+Святилище
+}
+
+STRING 90
+// Units: n007 (Алтарь глубин), EditorSuffix (Name - Editor Suffix)
+{
+(новый)
+}
+
+STRING 91
+// Units: n004 (Хижина мурлока), Name (Name)
+{
+Хижина мурлока
+}
+
+STRING 92
+// Units: n004 (Хижина мурлока), Tip (Tooltip - Basic)
+{
+Построить хижину мурлока
+}
+
+STRING 93
+// Abilities: A002 (Дефибрилляция), Researchhotkey (Hotkey - Learn)
+{
+Q
+}
+
+STRING 94
+// Units: N003 (Вождь мурлоков), Propernames (Proper Names)
+{
+Вождь мурлоков
+}
+
+STRING 95
+// Units: N003 (Вождь мурлоков), Tip (Tooltip - Basic)
+{
+Призвать мурлоков
+}
+
+STRING 96
+// Units: N003 (Вождь мурлоков), Ubertip (Tooltip - Extended)
+{
+Вождь всех мурлоков, владеет способностями, дефибриляция, шар из мурлоков, оглушающий удар и аура лидертсва
+}
+
+STRING 97
+// Units: N003 (Вождь мурлоков), Revivetip (Tooltip - Revive)
+{
+Воскресить вождя мурлоков
+}
+

@@ -3,14 +3,21 @@
 --- Created by Bergi.
 --- DateTime: 28.09.2020 17:25
 ---
+TIMER_PERIOD=1/32
+
 --Юниты
 MurgulID=FourCC('n000') -- мурлок работник
 MainBaseID=FourCC('n001') -- Храм пучин, главное здание
+MurgulWarriorlID=FourCC('n002') -- мурлок воин
+HeroWarriorID=FourCC('N003') -- Вождь мурлоков ГЕРОЙ
 
 
 --Способности
 ReturnFastGoldID=FourCC("A000") -- возврат золоты броском
 AbilityPierceID=FourCC("A001") -- Проникающая способность
+AbilityDefibrID=FourCC("A002") -- дефибриляция
+AbilityBowlingID=FourCC("A003") -- Боулинг баш
+AbilityIronID=FourCC("A005") -- тяжелый удар
 
 --Баффы
 GoldReturnID=FourCC("B000") -- отлов золота, которое попало кого-то

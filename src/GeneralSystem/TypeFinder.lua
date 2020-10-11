@@ -31,6 +31,7 @@ function FindUnitOfType(id,flag,x,y)
 			GroupRemoveUnit(perebor,e)
 		end
 	else
+		--local e=nil
 		GroupEnumUnitsInRange(perebor,x,y,flag,nil)
 		while true do
 			e = FirstOfGroup(perebor)
@@ -55,5 +56,5 @@ function FindUnitOfType(id,flag,x,y)
 	if unit==nil then
 	--	print("Не найдено живых юнитов данного типа")
 	end
-	return unit,k
+	return unit,k,rg
 end
